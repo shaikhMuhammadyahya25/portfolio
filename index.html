@@ -1,377 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yahya Shaikh | Full Stack Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#f7f9fc;
-      --card:#ffffff;
-      --primary:#2563eb;
-      --text:#0f172a;
-      --muted:#475569;
-      --grad: linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yahya Shaikh | Dual Era Developer</title>
 
-    body.dark{
-      --bg:#0b0f19;
-      --card:#121829;
-      --primary:#4f9cff;
-      --text:#e6e9f0;
-      --muted:#9aa4bf;
-      --grad: linear-gradient(135deg,#4f9cff,#7c5cff,#00ffd5);
-    }
-    *{box-sizing:border-box;margin:0;padding:0;font-family:Poppins,system-ui}
-    body{background:radial-gradient(1200px 600px at 10% -10%,#c7d2fe55,transparent),var(--bg);color:var(--text);overflow-x:hidden;transition:.3s}
-    body.dark{background:radial-gradient(1200px 600px at 10% -10%,#1b245a33,transparent),var(--bg);} 
-    a{color:inherit;text-decoration:none}
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    /* ---------- Utilities ---------- */
-    .container{max-width:1100px;margin:auto;padding:80px 20px}
-    .btn{padding:12px 22px;border-radius:999px;background:var(--grad);color:#000;font-weight:600;display:inline-flex;gap:8px;align-items:center;box-shadow:0 10px 30px #00000055;transition:.3s}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 15px 40px #00000088}
-    .glass{background:var(--card);border:1px solid #00000010;border-radius:18px;transition:.3s}
-    body.dark .glass{background:linear-gradient(180deg,#ffffff08,#ffffff02);border:1px solid #ffffff12} 
+<style>
+/* ============ RESET ============ */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  transition:all .45s ease;
+}
 
-    /* ---------- Navbar ---------- */
-    nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#ffffffcc;backdrop-filter:blur(10px);border-bottom:1px solid #00000010}
-    body.dark nav{background:#0b0f19cc;border-bottom:1px solid #ffffff10} 
-    nav .wrap{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
-    .logo{font-weight:700;letter-spacing:.5px}
-    nav a{margin-left:18px;color:var(--muted)}
-    nav a:hover{color:#fff}
+/* ============ MODES ============ */
+body.mode-90s{
+  --bg:#c0c0c0;
+  --card:#e0e0e0;
+  --text:#000;
+  --muted:#222;
+  --primary:#000080;
+  --border:#000;
+  font-family:'VT323', monospace;
+}
 
-    /* ---------- Hero ---------- */
-    .hero{min-height:100vh;display:grid;place-items:center;position:relative}
-    .hero-card{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
-    .badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#4f9cff22;color:var(--primary);border:1px solid #4f9cff55;margin-bottom:14px}
-    h1{font-size:clamp(32px,5vw,56px);line-height:1.1}
-    h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .subtitle{color:var(--muted);margin:18px 0 26px}
+body.mode-2026{
+  --bg:#0b0f19;
+  --card:rgba(255,255,255,.06);
+  --text:#e6e9f0;
+  --muted:#9aa4bf;
+  --primary:#4f9cff;
+  --border:rgba(255,255,255,.18);
+  font-family:'Poppins', system-ui;
+}
 
-    .avatar{width:100%;aspect-ratio:1;border-radius:22px;background:radial-gradient(circle at 30% 30%,#93c5fd55,transparent 60%),#e0e7ff;display:grid;place-items:center;position:relative;overflow:hidden}
-    body.dark .avatar{background:radial-gradient(circle at 30% 30%,#7c5cff55,transparent 60%),#1a1f35} 
-    .avatar::after{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,#4f9cff,transparent 40%,#00ffd5,transparent 70%,#7c5cff);animation:spin 10s linear infinite;opacity:.3}
-    .avatar img{width:80%;border-radius:18px;z-index:2;filter:drop-shadow(0 20px 40px #000)}
-    @keyframes spin{to{transform:rotate(360deg)}}
+/* ============ GLOBAL ============ */
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    /* ---------- Sections ---------- */
-    section h2{font-size:32px;margin-bottom:14px}
-    .muted{color:var(--muted)}
+a{text-decoration:none;color:inherit}
 
-    /* ---------- Hover Effects (Global) ---------- */
-    .glass:hover{box-shadow:0 20px 60px #000000aa;border-color:#4f9cff66}
-    .skill:hover,.card:hover{background:linear-gradient(180deg,#ffffff12,#ffffff05)}
-    nav a{position:relative}
-    nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--grad);transition:.3s}
-    nav a:hover::after{width:100%}
-    .btn{position:relative;overflow:hidden}
-    .btn::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,50%),#ffffff55,transparent 60%);opacity:0;transition:.3s}
-    .btn:hover::after{opacity:1}
+section{margin-bottom:70px}
 
-    /* ---------- Skills ---------- */
-    .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:26px}
-    .skill{padding:16px;text-align:center}
-    .skill strong{display:block;margin-top:8px}
+/* ============ TOGGLE ============ */
+.toggle{
+  position:fixed;
+  top:14px;
+  right:14px;
+  z-index:9999;
+  display:flex;
+  gap:6px;
+  padding:6px;
+  background:var(--card);
+  border:2px solid var(--border);
+}
 
-    /* ---------- Projects ---------- */
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:30px}
-    .card{padding:18px;transition:.3s;cursor:pointer}
-    .card:hover{transform:translateY(-6px)}
-    .tag{display:inline-block;font-size:12px;padding:4px 10px;border-radius:999px;background:#ffffff10;margin:6px 6px 0 0}
+.toggle button{
+  padding:6px 14px;
+  border:2px solid var(--border);
+  background:transparent;
+  cursor:pointer;
+  font-weight:700;
+}
 
-    /* ---------- Timeline ---------- */
-    .timeline{border-left:2px solid #ffffff22;margin-top:30px;padding-left:20px}
-    .step{margin-bottom:20px}
-    .step h4{margin-bottom:6px}
+.toggle button.active{
+  background:var(--primary);
+  color:#fff;
+}
 
-    /* ---------- Contact ---------- */
-    form{display:grid;gap:14px;max-width:500px;margin-top:20px}
-    input,textarea{background:#0f1426;border:1px solid #ffffff14;border-radius:10px;padding:12px;color:#fff}
-    textarea{min-height:120px;resize:vertical}
+/* ============ CONTAINER ============ */
+.container{
+  max-width:1100px;
+  margin:100px auto;
+  padding:30px;
+}
 
-    footer{text-align:center;padding:30px;color:var(--muted)}
+/* ============ WINDOW / CARD ============ */
+.window{
+  background:var(--card);
+  border:2px solid var(--border);
+  border-radius:0;
+}
 
-    /* ---------- Typing Animation ---------- */
-    #typing{display:inline-block;min-height:1.2em;border-right:3px solid var(--primary);padding-right:6px;white-space:nowrap;overflow:hidden}
+/* 2026 Glass */
+body.mode-2026 .window{
+  backdrop-filter:blur(18px);
+  border-radius:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
 
-    /* ---------- Reveal Animations ---------- */
-    .reveal{opacity:0;transform:translateY(30px);transition:1s}
-    .reveal.show{opacity:1;transform:none}
+/* 90s Borders */
+body.mode-90s .window{
+  border-top-color:#fff;
+  border-left-color:#fff;
+}
 
-    @media(max-width:900px){
-      .hero-card{grid-template-columns:1fr}
-    }
-    /* ===== Ultra Enhancements ===== */
-  .glow:hover{box-shadow:0 0 25px rgba(99,102,241,.45),0 0 60px rgba(99,102,241,.25)}
-  .btn{position:relative;overflow:hidden}
-  .btn::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-120%)}
-  .btn:hover::after{transform:translateX(120%);transition:.7s}
-  .badge{animation:pulse 2.5s infinite}
-  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-  .hero-card{background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(16,185,129,.12));border:1px solid rgba(99,102,241,.25)}
-  body.dark .hero-card{background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(16,185,129,.18))}
+/* ============ TITLE BAR ============ */
+.title{
+  padding:14px 18px;
+  font-weight:700;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-  /* Floating WhatsApp */
-  .wa-float{position:fixed;right:20px;bottom:20px;background:#25D366;color:#fff;padding:14px 18px;border-radius:999px;font-weight:700;box-shadow:0 10px 25px rgba(0,0,0,.25);z-index:999}
-  .wa-float:hover{transform:translateY(-4px) scale(1.05)}
+/* ============ HERO ============ */
+.hero{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:40px;
+  align-items:center;
+}
 
-      /* Stats */
-  .stats{display:flex;justify-content:space-between;gap:20px;margin-top:40px;flex-wrap:wrap}
-  .stat{flex:1;min-width:220px;padding:22px;border-radius:18px;text-align:center;opacity:1;transform:none;transition:.4s}
-  .stat h3{font-size:34px}
+.hero h1{
+  font-size:clamp(32px,5vw,54px);
+  line-height:1.1;
+}
 
-  /* Gradient text */
+.hero span{
+  color:var(--primary);
+}
 
+.hero p{
+  color:var(--muted);
+  margin:18px 0 26px;
+  font-size:18px;
+}
 
-  .grad{background:linear-gradient(90deg,#6366f1,#10b981,#22d3ee);-webkit-background-clip:text;color:transparent}
+.avatar{
+  padding:30px;
+  border:2px solid var(--border);
+  text-align:center;
+}
 
-  </style>
+body.mode-2026 .avatar{
+  border-radius:22px;
+  background:linear-gradient(135deg,rgba(79,156,255,.25),rgba(16,185,129,.18));
+}
+
+.avatar img{
+  max-width:220px;
+}
+
+/* ============ BUTTON ============ */
+.btn{
+  display:inline-block;
+  padding:14px 26px;
+  border:2px solid var(--border);
+  background:var(--primary);
+  color:#fff;
+  font-weight:700;
+}
+
+body.mode-2026 .btn{
+  border-radius:999px;
+  box-shadow:0 12px 40px rgba(79,156,255,.35);
+}
+
+/* ============ STATS ============ */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:40px;
+}
+
+.stat{
+  padding:26px;
+  text-align:center;
+  border:2px solid var(--border);
+}
+
+body.mode-2026 .stat{
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+}
+
+.stat h3{
+  font-size:42px;
+  color:var(--primary);
+}
+
+/* ============ CARDS ============ */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.card{
+  padding:24px;
+  border:2px solid var(--border);
+}
+
+body.mode-2026 .card{
+  border-radius:20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+}
+
+body.mode-2026 .card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+/* ============ SKILLS ============ */
+.skills{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+}
+
+.skill{
+  padding:16px;
+  text-align:center;
+  border:2px solid var(--border);
+}
+
+body.mode-2026 .skill{
+  border-radius:14px;
+}
+
+/* ============ TIMELINE ============ */
+.timeline{
+  border-left:3px solid var(--primary);
+  padding-left:20px;
+}
+
+.step{margin-bottom:18px}
+
+/* ============ CONTACT ============ */
+input,textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:14px;
+  border:2px solid var(--border);
+  background:transparent;
+  color:var(--text);
+}
+
+body.mode-2026 input,
+body.mode-2026 textarea{
+  border-radius:14px;
+  background:rgba(255,255,255,.04);
+}
+
+/* ============ FOOTER ============ */
+footer{
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
+}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+}
+</style>
 </head>
-<body>
 
-  <!-- Navbar -->
-  <nav>
-    <div class="wrap">
-      <button id="modeBtn" class="btn" style="padding:8px 14px;font-size:14px">🌙 Dark</button>
-      <div class="logo">Yahya.dev</div>
-      <div>
-        <a href="#services">Services</a>
-        <a href="#skills">Tech</a>Skills</a>
-        <a href="#ai">AI Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#journey">Journey</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+<body class="mode-90s">
 
-  <!-- Hero -->
+<!-- TOGGLE -->
+<div class="toggle">
+  <button id="b90" class="active">🖥️ 90's</button>
+  <button id="b26">🚀 2026</button>
+</div>
+
+<div class="container window">
+  <div class="title">Yahya Shaikh — Dual Era Portfolio</div>
+
+  <!-- HERO -->
   <section class="hero">
-    <div class="container hero-card glass reveal">
-      <div>
-        <span class="badge">Available for Freelance</span>
-        <h1>Hi, I'm <span>Yahya Shaikh</span><br/><span id="typing"></span></h1>
-        <p class="subtitle">I help businesses get more customers using fast websites, smart automation and AI‑powered tools.</p>
-        <a class="btn" href="#contact">Hire Me →</a>
-      </div>
-      <div class="avatar">
-        <img src="Yahya_Shaikh.png" alt="profile" />
-      </div>
+    <div>
+      <h1>Hi, I'm <span>Yahya Shaikh</span></h1>
+      <p>
+        Full-Stack Developer helping businesses grow using
+        <b>high-converting websites, AI automation & smart systems</b>.
+      </p>
+      <a class="btn">Hire Me</a>
     </div>
-          <div class="stats reveal">
-      <div class="stat glass reveal"><h3 class="grad" data-count="50">0</h3><p class="muted">Leads Generated</p></div>
-      <div class="stat glass reveal"><h3 class="grad" data-count="20">0</h3><p class="muted">Projects Completed</p></div>
-      <div class="stat glass reveal"><h3 class="grad" data-count="95">0</h3><p class="muted">Client Satisfaction %</p></div>
+    <div class="avatar">
+      <img src="Yahya_Shaikh.png">
+      <p>Developer Profile</p>
     </div>
   </section>
 
-<!-- Services (Business Focused) -->
-  <section id="services" class="container reveal">
-    <h2>Services for Businesses</h2>
-    <p class="muted">I help businesses grow with digital solutions that bring leads and save time.</p>
-    <div class="projects">
-      <div class="card glass glow">
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><h3>50+</h3><p>Leads Generated</p></div>
+    <div class="stat"><h3>20+</h3><p>Projects Completed</p></div>
+    <div class="stat"><h3>95%</h3><p>Client Satisfaction</p></div>
+  </div>
+
+  <!-- SERVICES -->
+  <section>
+    <h2>What I Do</h2>
+    <div class="cards">
+      <div class="card">
         <h3>Business Websites</h3>
-        <p class="muted">Professional websites that build trust and convert visitors into customers.</p>
+        <p>I build fast, SEO-friendly websites that convert visitors into paying customers.</p>
       </div>
-      <div class="card glass glow">
+      <div class="card">
         <h3>Lead Generation Systems</h3>
-        <p class="muted">Landing pages, forms and automation to capture and manage leads.</p>
+        <p>Landing pages, funnels & automation that consistently bring qualified leads.</p>
       </div>
-      <div class="card glass glow">
+      <div class="card">
         <h3>AI Chatbots</h3>
-        <p class="muted">24/7 customer support that answers queries and books appointments.</p>
+        <p>24/7 AI chatbots that handle support, inquiries & bookings automatically.</p>
       </div>
-      <div class="card glass glow">
+      <div class="card">
         <h3>Workflow Automation</h3>
-        <p class="muted">Automate emails, follow‑ups, reports and internal processes.</p>
+        <p>Automate emails, follow-ups, CRM updates & internal business processes.</p>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="container reveal">
+  <!-- SKILLS -->
+  <section>
     <h2>Technology Stack</h2>
-    <p class="muted">Technologies I work with</p>
     <div class="skills">
-      <div class="skill glass">⚛️<strong>React</strong></div>
-      <div class="skill glass">🚀<strong>Next.js</strong></div>
-      <div class="skill glass">🟢<strong>Node.js</strong></div>
-      <div class="skill glass">🍃<strong>MongoDB</strong></div>
-      <div class="skill glass">🎨<strong>HTML/CSS</strong></div>
-      <div class="skill glass">⚡<strong>JavaScript</strong></div>
+      <div class="skill">HTML / CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React</div>
+      <div class="skill">Next.js</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">MongoDB</div>
+      <div class="skill">AI APIs</div>
+      <div class="skill">Automation Tools</div>
     </div>
   </section>
 
-  <!-- AI Services -->
-  <section id="ai" class="container reveal">
-    <h2>AI Automation & AI Agents</h2>
-    <p class="muted">Smart systems that save time and increase productivity</p>
-    <div class="projects">
-      <div class="card glass glow">
-        <h3>AI Chatbot for Business</h3>
-        <p class="muted">24/7 customer support using custom trained AI.</p>
-        <span class="tag">ChatGPT API</span><span class="tag">Web Integration</span>
-      </div>
-      <div class="card glass glow">
-        <h3>Workflow Automation</h3>
-        <p class="muted">Auto emails, lead handling and CRM updates.</p>
-        <span class="tag">Zapier</span><span class="tag">Make</span>
-      </div>
-      <div class="card glass glow">
-        <h3>AI Agents</h3>
-        <p class="muted">Agents that perform tasks like research & reporting.</p>
-        <span class="tag">LangChain</span><span class="tag">Node.js</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="container reveal">
-    <h2>Featured Projects</h2>
-    <div class="projects">
-      <div class="card glass glow">
-        <h3>Business Website</h3>
-        <p class="muted">Fast SEO‑friendly website for local business.</p>
-        <span class="tag">Next.js</span><span class="tag">Tailwind</span>
-      </div>
-      <div class="card glass glow">
-        <h3>Admin Dashboard</h3>
-        <p class="muted">Analytics & management system.</p>
-        <span class="tag">React</span><span class="tag">Charts</span>
-      </div>
-      <div class="card glass glow">
-        <h3>E‑commerce App</h3>
-        <p class="muted">Full MERN stack shopping platform.</p>
-        <span class="tag">MERN</span><span class="tag">Stripe</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Journey -->
-  <section id="journey" class="container reveal">
+  <!-- JOURNEY -->
+  <section>
     <h2>My Journey</h2>
     <div class="timeline">
-      <div class="step">
-        <h4>2024 – Started Web Development</h4>
-        <p class="muted">Learned HTML, CSS and JavaScript fundamentals.</p>
-      </div>
-      <div class="step">
-        <h4>2025 – MERN & Freelancing</h4>
-        <p class="muted">Built real projects and started client work.</p>
-      </div>
-      <div class="step">
-        <h4>2026 – Scaling Up</h4>
-        <p class="muted">Targeting international clients and SaaS ideas.</p>
-      </div>
+      <div class="step"><b>2024</b> – Started Web Development</div>
+      <div class="step"><b>2025</b> – MERN Stack & Freelancing</div>
+      <div class="step"><b>2026</b> – Scaling with AI & Global Clients</div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="container reveal">
+  <!-- CONTACT -->
+  <section>
     <h2>Contact Me</h2>
-    <p class="muted">Let’s build something awesome together</p>
-    <form onsubmit="sendMessage(event)">
-      <input placeholder="Your Name" required />
-      <input type="email" placeholder="Email" required />
-      <textarea placeholder="Tell me about your project"></textarea>
-      <button class="btn" type="submit">Send Message</button>
-    </form>
-    <p id="msg" class="muted"></p>
+    <input placeholder="Your Name">
+    <input placeholder="Email">
+    <textarea placeholder="Tell me about your project"></textarea>
+    <a class="btn">Send Message</a>
   </section>
 
-  <footer>© 2026 Yahya Shaikh — All Rights Reserved</footer>
+</div>
 
-  <script>
-    // Button glow follow cursor
-    document.addEventListener('mousemove',e=>{
-      document.querySelectorAll('.btn').forEach(b=>{
-        const r=b.getBoundingClientRect();
-        b.style.setProperty('--x',`${e.clientX-r.left}px`);
-        b.style.setProperty('--y',`${e.clientY-r.top}px`);
-      })
-    });
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
-    }, {threshold:.2});
-    reveals.forEach(r => observer.observe(r));
-
-    // Typing animation
-    const roles = [
-      'Helping Businesses Grow Online',
-      'Websites That Convert Visitors',
-      'AI Automation for Daily Tasks',
-      'Smart AI Agents for Support',
-      'Full‑Stack Web Developer',
-      'MERN Stack Developer',
-      'Next.js Specialist',
-      'AI Automation Expert',
-      'AI Agents Builder'
-    ];
-    let roleIndex = 0, charIndex = 0, deleting = false;
-    const typingEl = document.getElementById('typing');
-
-    function typeLoop(){
-      const current = roles[roleIndex];
-      if(!deleting){
-        typingEl.textContent = current.slice(0, ++charIndex);
-        if(charIndex === current.length){
-          setTimeout(()=>deleting=true, 1200);
-        }
-      } else {
-        typingEl.textContent = current.slice(0, --charIndex);
-        if(charIndex === 0){
-          deleting = false;
-          roleIndex = (roleIndex + 1) % roles.length;
-        }
-      }
-      setTimeout(typeLoop, deleting ? 60 : 100);
-    }
-    typeLoop();
-
-    // Dark mode toggle
-    const btn = document.getElementById('modeBtn');
-    btn.onclick = () => {
-      document.body.classList.toggle('dark');
-      btn.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';
-    };
-
-    // Fake contact submit
-    function sendMessage(e){
-      e.preventDefault();
-      document.getElementById('msg').innerText = 'Thanks! I will contact you soon.';
-    }
-  </script>
-
-  <a class="wa-float" href="https://wa.me/91XXXXXXXXXX" target="_blank">Chat on WhatsApp</a>
+<footer>© 2026 Yahya Shaikh — Built for the Past & the Future</footer>
 
 <script>
-// ===== Counter Animation =====
-const counters=document.querySelectorAll('[data-count]');
-const runCounter=(el)=>{let i=0;const t=+el.dataset.count;const step=Math.max(1,Math.floor(t/60));const timer=setInterval(()=>{i+=step;if(i>=t){i=t;clearInterval(timer)}el.innerText=i},25)};
+const b90=document.getElementById('b90');
+const b26=document.getElementById('b26');
 
-// ===== Scroll Reveal + Counter Trigger =====
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('active');
-      const num=e.target.querySelector('[data-count]');
-      if(num && !num.started){num.started=true;runCounter(num)}
-    }
-  })
-},{threshold:.25});
+b90.onclick=()=>{
+  document.body.className='mode-90s';
+  b90.classList.add('active');
+  b26.classList.remove('active');
+};
 
-document.querySelectorAll('.reveal,.stat').forEach(el=>io.observe(el));
-
-// stats are inline, no slide direction needed
-
+b26.onclick=()=>{
+  document.body.className='mode-2026';
+  b26.classList.add('active');
+  b90.classList.remove('active');
+};
 </script>
+
 </body>
 </html>
+
